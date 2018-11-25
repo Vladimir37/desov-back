@@ -3,6 +3,7 @@ import passport from '../assets/passport';
 export default {
     getStatus(ctx) {
         ctx.body = {
+            success: true,
             logged: ctx.isAuthenticated(),
             user: ctx.state.user,
         };

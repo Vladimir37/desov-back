@@ -8,7 +8,10 @@ const LocalStrategy = local.Strategy;
 passport.use(new LocalStrategy(
     (login, pass, done) => {
         const passHash = md5(pass);
-        UserModel.findOne({login}).then(user => {
+        UserModel.findOne({
+            login,
+            active: true,
+        }).then(user => {
             if (!user || user.pass != passHash) {
                 done(null, false);
             }

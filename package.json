@@ -17,12 +17,14 @@
   },
   "homepage": "https://github.com/Vladimir37/desov-back#readme",
   "dependencies": {
+    "joi": "^14.2.0",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
     "koa-passport": "^4.1.1",
     "koa-router": "^7.4.0",
     "koa-session": "^5.10.0",
+    "koa2-validation": "^1.0.0",
     "md5": "^2.2.1",
     "mongoose": "^5.3.12",
     "passport-local": "^1.0.0"
