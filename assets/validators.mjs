@@ -23,4 +23,17 @@ export default {
             status: Joi.number().required(),
         }
     },
+    changePass: {
+        body: {
+            old_pass: Joi.string().required(),
+            new_pass: Joi.string().required(),
+            new_pass_again: Joi.any().valid(Joi.ref('new_pass')).required().options({ 
+                language: { 
+                    any: { 
+                        allowOnly: 'Must match password' 
+                    } 
+                } 
+            }),
+        }
+    },
 }
