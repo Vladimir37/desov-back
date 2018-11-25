@@ -1,21 +1,21 @@
 import passport from 'koa-passport';
-import {Strategy} from 'passport-local';
+import local from 'passport-local';
 import md5 from 'md5';
-import {User} from '../models/models';
+import { UserModel } from '../models/models';
 
-passport.use(new Strategy(
+const LocalStrategy = local.Strategy;
+
+passport.use(new LocalStrategy(
     (login, pass, done) => {
-        User.findOne({username}, (err, user) => {
-            if (err) {
-                return done(err);
+        const passHash = md5(pass);
+        UserModel.findOne({login}).then(user => {
+            if (!user || user.pass != passHash) {
+                done(null, false);
             }
-            if (!user || !user.checkPassword(password)) {
-                return done(null, false, {message: ''});
-            }
-            return done(null, user);
-        });
-        User.findOne({username}).then(result => {
-            //
+            user.pass = '';
+            done(null, user);
+        }).catch(err => {
+            done(err);
         });
     })
 );
@@ -25,8 +25,10 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-        done(err, user.username);
+    UserModel.findById(id, (err, user) => {
+        user.pass = '';
+        done(err, user);
     })
 });
-module.exports = passport;
+
+export default passport;

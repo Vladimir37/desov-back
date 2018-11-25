@@ -1,8 +1,8 @@
 import Router from 'koa-router';
-import admin from './admin';
+import auth from './auth';
 
 let router = new Router();
 
-router.use(admin.routes());
+router.use('/auth', auth.routes());
 
 export default router;

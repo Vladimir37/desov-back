@@ -1,10 +1,8 @@
 import Router from 'koa-router';
-import Auth from '../controllers/auth';
+// import Admin from '../controllers/admin';
 
 let router = new Router();
 
-router.get('/status', Auth.getStatus);
-router.post('/login', Auth.login);
-router.post('/logout', Auth.logout);
+// router.get('/status', Admin.getStatus);
 
 export default router;
