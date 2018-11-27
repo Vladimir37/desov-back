@@ -18,7 +18,7 @@ export default {
     },
     editUser: {
         body: {
-            id: Joi.string().required(),
+            id: Joi.objectId().required(),
             login: Joi.string().required(),
             status: Joi.number().required(),
         }
@@ -34,6 +34,21 @@ export default {
                     } 
                 } 
             }),
+        }
+    },
+    createOblast: {
+        body: {
+            old_name: Joi.string().required(),
+            new_name: Joi.string(),
+            to_rename: Joi.boolean().required(),
+        }
+    },
+    editOblast: {
+        body: {
+            id: Joi.objectId().required(),
+            old_name: Joi.string().required(),
+            new_name: Joi.string(),
+            to_rename: Joi.boolean().required(),
         }
     },
 }

@@ -29,7 +29,7 @@ export const MetroStationModel = mongoose.model('MetroStation', MetroStation);
 const Oblast = new Schema({
     old_name: String,
     new_name: String,
-    toRename: Boolean,
+    to_rename: Boolean,
 });
 export const OblastModel = mongoose.model('Oblast', Oblast);
 
@@ -39,7 +39,7 @@ const City = new Schema({
     historical: Boolean,
     oblast: Schema.Types.ObjectId,
     population: String,
-    toRename: Boolean,
+    to_rename: Boolean,
 });
 export const CityModel = mongoose.model('City', City);
 
