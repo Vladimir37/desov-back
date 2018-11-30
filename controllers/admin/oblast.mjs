@@ -12,7 +12,16 @@ export default {
         };
     },
     async edit(ctx) {
-        let oblast = OblastModel.findById(ctx.request.body.id);
+        let oblast = await OblastModel.findById(ctx.request.body.id);
         
+        oblast.old_name = ctx.request.body.old_name;
+        oblast.new_name = ctx.request.body.new_name;
+        oblast.to_rename = ctx.request.body.to_rename;
+
+        await oblast.save();
+
+        ctx.body = {
+            success: true,
+        };
     },
 }

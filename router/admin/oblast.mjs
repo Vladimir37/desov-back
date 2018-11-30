@@ -5,8 +5,7 @@ import Validators from '../../assets/validators';
 
 let router = new Router();
 
-router.post('/create', Validation(Validators.changePass), Oblast.create);
-router.post('/edit', Validation(Validators.changePass), Oblast.edit);
-
+router.post('/create', Validation(Validators.createOblast), Oblast.create);
+router.post('/edit', Validation(Validators.editOblast), Oblast.edit);
 
 export default router;
