@@ -91,4 +91,21 @@ export default {
             type: Joi.number().required(),
         }
     },
+    createDistrict: {
+        body: {
+            old_name: Joi.string().required(),
+            new_name: Joi.string(),
+            city: Joi.objectId().required(),
+            historical: Joi.boolean().required(),
+        }
+    },
+    editDistrict: {
+        body: {
+            id: Joi.objectId().required(),
+            old_name: Joi.string().required(),
+            new_name: Joi.string(),
+            city: Joi.objectId().required(),
+            historical: Joi.boolean().required(),
+        }
+    },
 }
