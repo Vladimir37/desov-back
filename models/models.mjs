@@ -51,13 +51,13 @@ const Street = new Schema({
 });
 export const StreetModel = mongoose.model('Street', Street);
 
-const Square = new Schema({
-    old_name: String,
-    new_name: String,
-    city: Schema.Types.ObjectId,
-    historical: Boolean,
-});
-export const SquareModel = mongoose.model('Square', Square);
+// const Square = new Schema({
+//     old_name: String,
+//     new_name: String,
+//     city: Schema.Types.ObjectId,
+//     historical: Boolean,
+// });
+// export const SquareModel = mongoose.model('Square', Square);
 
 const District = new Schema({
     old_name: String,

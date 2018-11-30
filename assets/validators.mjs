@@ -72,4 +72,21 @@ export default {
             population: Joi.string().required(),
         }
     },
+    createStreet: {
+        body: {
+            old_name: Joi.string().required(),
+            new_name: Joi.string(),
+            city: Joi.objectId().required(),
+            historical: Joi.boolean().required(),
+        }
+    },
+    editStreet: {
+        body: {
+            id: Joi.objectId().required(),
+            old_name: Joi.string().required(),
+            new_name: Joi.string(),
+            city: Joi.objectId().required(),
+            historical: Joi.boolean().required(),
+        }
+    },
 }

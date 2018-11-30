@@ -6,9 +6,6 @@ export default async (ctx, next) => {
             ctx.throw(404);
         }
     } catch (err) {
-        // TEMP
-        // console.log(err)
-        // TEMP
         ctx.status = err.status || err.code || 500;
         ctx.body = {
             success: false,
