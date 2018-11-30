@@ -78,6 +78,7 @@ export default {
             new_name: Joi.string(),
             city: Joi.objectId().required(),
             historical: Joi.boolean().required(),
+            type: Joi.number().required(),
         }
     },
     editStreet: {
@@ -87,6 +88,7 @@ export default {
             new_name: Joi.string(),
             city: Joi.objectId().required(),
             historical: Joi.boolean().required(),
+            type: Joi.number().required(),
         }
     },
 }

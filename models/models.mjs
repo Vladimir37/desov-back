@@ -48,16 +48,9 @@ const Street = new Schema({
     new_name: String,
     city: Schema.Types.ObjectId,
     historical: Boolean,
+    type: Number, // 0 - street; 1 - square; 2 - park
 });
 export const StreetModel = mongoose.model('Street', Street);
-
-// const Square = new Schema({
-//     old_name: String,
-//     new_name: String,
-//     city: Schema.Types.ObjectId,
-//     historical: Boolean,
-// });
-// export const SquareModel = mongoose.model('Square', Square);
 
 const District = new Schema({
     old_name: String,
