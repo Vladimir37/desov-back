@@ -51,4 +51,25 @@ export default {
             to_rename: Joi.boolean().required(),
         }
     },
+    createCity: {
+        body: {
+            old_name: Joi.string().required(),
+            new_name: Joi.string(),
+            to_rename: Joi.boolean().required(),
+            historical: Joi.boolean().required(),
+            oblast: Joi.objectId().required(),
+            population: Joi.string().required(),
+        }
+    },
+    editCity: {
+        body: {
+            id: Joi.objectId().required(),
+            old_name: Joi.string().required(),
+            new_name: Joi.string(),
+            to_rename: Joi.boolean().required(),
+            historical: Joi.boolean().required(),
+            oblast: Joi.objectId().required(),
+            population: Joi.string().required(),
+        }
+    },
 }

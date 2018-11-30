@@ -13,6 +13,9 @@ export default {
     },
     async edit(ctx) {
         let oblast = await OblastModel.findById(ctx.request.body.id);
+        if (!oblast) {
+            ctx.throw(400, 'Incorrect id');
+        }
         
         oblast.old_name = ctx.request.body.old_name;
         oblast.new_name = ctx.request.body.new_name;
