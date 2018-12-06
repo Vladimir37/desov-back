@@ -108,4 +108,17 @@ export default {
             historical: Joi.boolean().required(),
         }
     },
+    createPerson: {
+        name: Joi.string().required(),
+        date: Joi.string().required(),
+        description: Joi.string().required(),
+    },
+    editPerson: {
+        body: {
+            id: Joi.objectId().required(),
+            name: Joi.string().required(),
+            date: Joi.string().required(),
+            description: Joi.string().required(),
+        }
+    },
 }

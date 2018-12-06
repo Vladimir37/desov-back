@@ -7,6 +7,7 @@ import oblast from './admin/oblast';
 import city from './admin/city';
 import street from './admin/street';
 import district from './admin/district';
+import person from './admin/person';
 
 let router = new Router();
 
@@ -17,5 +18,6 @@ router.use('/oblast', Middlewares.forAll, oblast.routes());
 router.use('/city', Middlewares.forAll, city.routes());
 router.use('/street', Middlewares.forAll, street.routes());
 router.use('/district', Middlewares.forAll, district.routes());
+router.use('/person', person.routes());
 
 export default router;

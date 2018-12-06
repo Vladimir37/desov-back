@@ -6,7 +6,7 @@ export default async (ctx, next) => {
             ctx.throw(404);
         }
     } catch (err) {
-        ctx.status = err.status || err.code || 500;
+        ctx.status = err.status || 500;
         ctx.body = {
             success: false,
             message: err.message,

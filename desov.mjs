@@ -2,9 +2,13 @@ import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import session from 'koa-session';
 import json from 'koa-json';
+import serve from 'koa-static';
+import mount from 'koa-mount';
 import Router from './router/index';
 import passport from './assets/passport';
 import errorHandling from './assets/errors';
+
+//node --experimental-modules desov.mjs
 
 const app = new Koa();
 
@@ -19,6 +23,8 @@ app.use(passport.session());
 
 app.use(errorHandling);
 
+app.use(mount('/static', serve('images/')));
+
 app.use(Router.routes());
-//node --experimental-modules desov.mjs
+
 app.listen(3000);
