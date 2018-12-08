@@ -96,6 +96,16 @@ export default {
         };
     },
     async remove(ctx) {
-        //
+        let person = await PersonModel.findById(ctx.request.body.id);
+        if (!person) {
+            ctx.throw(400, 'Incorrect id');
+        }
+
+        await afs.unlink('images/' + person.photo);
+        await person.remove();
+
+        ctx.body = {
+            success: true,
+        };
     }
 }
