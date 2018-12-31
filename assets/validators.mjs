@@ -121,4 +121,11 @@ export default {
             description: Joi.string().required(),
         }
     },
+    editMetro: {
+        body: {
+            id: Joi.objectId().required(),
+            name: Joi.string().required(),
+            city: Joi.objectId().required(),
+        }
+    }
 }
