@@ -1,14 +1,21 @@
 import mime from 'mime-types';
+import Joi from 'joi';
 import afs from 'async-file';
-import { MetroModel } from '../../models/models';
+import Validators from '../../assets/validators';
+import { MetroModel, CityModel } from '../../models/models';
 
 export default {
     async create(ctx) {
         const file = ctx.req.file;
         const body = ctx.req.body;
 
+        const validation = Joi.validate(body, Validators.createMetro);
         if (!file) {
             ctx.throw(400, 'Incorrect file');
+        }
+        if (validation.error) {
+            await afs.unlink(file.destination + file.filename);
+            ctx.throw(400, 'Incorrect data');
         }
 
         const fileExtension = mime.extension(file.mimetype);
@@ -22,13 +29,7 @@ export default {
 
         await afs.rename(file.destination + file.filename, 'images/' + newName);
 
-        // НОРМАЛЬНУЮ ВАЛИДАЦИЮ
-        if (!body.name) {
-            afs.unlink('images/' + newName);
-            ctx.throw(400, 'Incorrect data');
-        }
-
-        const targetCity = await CityModel.findById(ctx.request.body.city);
+        const targetCity = await CityModel.findById(body.city);
         if (!targetCity) {
             afs.unlink('images/' + newName);
             ctx.throw(400, 'Incorrect city');
@@ -93,7 +94,7 @@ export default {
         const newName = Date.now() + '.' + fileExtension;
 
         await afs.rename(file.destination + file.filename, 'images/' + newName);
-        await afs.unlink('images/' + metro.photo);
+        await afs.unlink('images/' + metro.logo);
 
         metro.logo = newName;
 
@@ -104,6 +105,16 @@ export default {
         };
     },
     async remove(ctx) {
-        //
+        let metro = await MetroModel.findById(ctx.request.body.id);
+        if (!metro) {
+            ctx.throw(400, 'Incorrect metro id');
+        }
+
+        await afs.unlink('images/' + metro.logo);
+        await metro.remove();
+
+        ctx.body = {
+            success: true,
+        };
     },
 }

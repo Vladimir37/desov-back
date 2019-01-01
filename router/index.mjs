@@ -20,6 +20,6 @@ router.use('/city', Middlewares.forAll, city.routes());
 router.use('/street', Middlewares.forAll, street.routes());
 router.use('/district', Middlewares.forAll, district.routes());
 router.use('/person', Middlewares.forAdmin, person.routes());
-router.use('/metro', Middlewares.forAdmin, metro.routes());
+router.use('/metro', metro.routes());
 
 export default router;
