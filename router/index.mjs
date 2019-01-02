@@ -9,6 +9,7 @@ import street from './admin/street';
 import district from './admin/district';
 import person from './admin/person';
 import metro from './admin/metro';
+import metroStation from './admin/metro-station';
 
 let router = new Router();
 
@@ -20,6 +21,7 @@ router.use('/city', Middlewares.forAll, city.routes());
 router.use('/street', Middlewares.forAll, street.routes());
 router.use('/district', Middlewares.forAll, district.routes());
 router.use('/person', Middlewares.forAdmin, person.routes());
-router.use('/metro', metro.routes());
+router.use('/metro', Middlewares.forAdmin, metro.routes());
+router.use('/metro-station', Middlewares.forAdmin, metroStation.routes());
 
 export default router;

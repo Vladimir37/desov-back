@@ -131,5 +131,20 @@ export default {
             name: Joi.string().required(),
             city: Joi.objectId().required(),
         }
+    },
+    createMetroStation: {
+        body: {
+            old_name: Joi.string().required(),
+            new_name: Joi.string().required(),
+            metro: Joi.objectId().required(),
+        }
+    },
+    editMetroStation: {
+        body: {
+            id: Joi.objectId().required(),
+            old_name: Joi.string().required(),
+            new_name: Joi.string().required(),
+            metro: Joi.objectId().required(),
+        }
     }
 }
