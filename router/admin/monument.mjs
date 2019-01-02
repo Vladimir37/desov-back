@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 import multer from 'koa-multer';
-import Metro from '../../controllers/admin/metro';
+import Monument from '../../controllers/admin/monument';
 import Validation from 'koa2-validation';
 import Validators from '../../assets/validators';
 
@@ -13,9 +13,8 @@ const upload = multer({
 
 let router = new Router();
 
-router.post('/create', upload.single('logo'), Metro.create);
-router.post('/edit', Validation(Validators.editMetro), Metro.edit);
-router.post('/image', upload.single('logo'), Metro.image);
-router.post('/remove', Validation(Validators.id), Metro.remove);
+router.post('/create', upload.single('photo'), Monument.create);
+router.post('/edit', Validation(Validators.editMonument), Monument.edit);
+router.post('/image', upload.single('photo'), Monument.image);
 
 export default router;

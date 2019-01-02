@@ -146,5 +146,18 @@ export default {
             new_name: Joi.string().required(),
             metro: Joi.objectId().required(),
         }
-    }
+    },
+    createMonument: {
+        coordinate: Joi.string().required(),
+        title: Joi.string().required(),
+        city: Joi.objectId().required(),
+    },
+    editMonument: {
+        body: {
+            id: Joi.objectId().required(),
+            coordinate: Joi.string().required(),
+            title: Joi.string().required(),
+            city: Joi.objectId().required(),
+        }
+    },
 }
