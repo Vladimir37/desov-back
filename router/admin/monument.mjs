@@ -8,7 +8,7 @@ import Validators from '../../assets/validators';
 const upload = multer({ 
     dest: config.tempFileDirectory,
     limits: {
-        fileSize: 524288
+        fileSize: config.maxFileSize
     }
 });
 

@@ -160,4 +160,19 @@ export default {
             city: Joi.objectId().required(),
         }
     },
+    createOther: {
+        coordinate: Joi.string().required(),
+        title: Joi.string().required(),
+        description: Joi.string().required(),
+        city: Joi.objectId().required(),
+    },
+    editOther: {
+        body: {
+            id: Joi.objectId().required(),
+            coordinate: Joi.string().required(),
+            title: Joi.string().required(),
+            description: Joi.string().required(),
+            city: Joi.objectId().required(),
+        }
+    },
 }
