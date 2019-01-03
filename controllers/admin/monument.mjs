@@ -1,6 +1,7 @@
 import mime from 'mime-types';
 import Joi from 'joi';
 import afs from 'async-file';
+import config from '../../config';
 import Validators from '../../assets/validators';
 import { MonumentModel, CityModel } from '../../models/models';
 
@@ -27,11 +28,11 @@ export default {
 
         const newName = Date.now() + '.' + fileExtension;
 
-        await afs.rename(file.destination + file.filename, 'images/' + newName);
+        await afs.rename(file.destination + file.filename, config.permanentFileDirectory + newName);
 
         const targetCity = await CityModel.findById(body.city);
         if (!targetCity) {
-            afs.unlink('images/' + newName);
+            afs.unlink(config.permanentFileDirectory + newName);
             ctx.throw(400, 'Incorrect city');
         }
 
@@ -95,8 +96,8 @@ export default {
 
         const newName = Date.now() + '.' + fileExtension;
 
-        await afs.rename(file.destination + file.filename, 'images/' + newName);
-        await afs.unlink('images/' + monument.photo);
+        await afs.rename(file.destination + file.filename, config.permanentFileDirectory + newName);
+        await afs.unlink(config.permanentFileDirectory + monument.photo);
 
         monument.photo = newName;
 

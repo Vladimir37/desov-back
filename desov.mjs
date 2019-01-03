@@ -4,6 +4,7 @@ import session from 'koa-session';
 import json from 'koa-json';
 import serve from 'koa-static';
 import mount from 'koa-mount';
+import config from './config';
 import Router from './router/index';
 import passport from './assets/passport';
 import errorHandling from './assets/errors';
@@ -23,8 +24,8 @@ app.use(passport.session());
 
 app.use(errorHandling);
 
-app.use(mount('/static', serve('images/')));
+app.use(mount('/static', serve(config.permanentFileDirectory)));
 
 app.use(Router.routes());
 
-app.listen(3000);
+app.listen(config.port);

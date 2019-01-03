@@ -1,11 +1,12 @@
 import Router from 'koa-router';
 import multer from 'koa-multer';
+import config from '../../config';
 import Monument from '../../controllers/admin/monument';
 import Validation from 'koa2-validation';
 import Validators from '../../assets/validators';
 
 const upload = multer({ 
-    dest: 'temp/',
+    dest: config.tempFileDirectory,
     limits: {
         fileSize: 524288
     }

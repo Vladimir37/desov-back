@@ -1,6 +1,7 @@
 import mime from 'mime-types';
 import Joi from 'joi';
 import afs from 'async-file';
+import config from '../../config';
 import Validators from '../../assets/validators';
 import { PersonModel } from '../../models/models';
 
@@ -27,7 +28,7 @@ export default {
 
         const newName = Date.now() + '.' + fileExtension;
 
-        await afs.rename(file.destination + file.filename, 'images/' + newName);
+        await afs.rename(file.destination + file.filename, config.permanentFileDirectory + newName);
 
         await PersonModel.create({
             name: ctx.req.body.name,
@@ -84,8 +85,8 @@ export default {
 
         const newName = Date.now() + '.' + fileExtension;
 
-        await afs.rename(file.destination + file.filename, 'images/' + newName);
-        await afs.unlink('images/' + person.photo);
+        await afs.rename(file.destination + file.filename, config.permanentFileDirectory + newName);
+        await afs.unlink(config.permanentFileDirectory + person.photo);
 
         person.photo = newName;
 
@@ -101,7 +102,7 @@ export default {
             ctx.throw(400, 'Incorrect id');
         }
 
-        await afs.unlink('images/' + person.photo);
+        await afs.unlink(config.permanentFileDirectory + person.photo);
         await person.remove();
 
         ctx.body = {
