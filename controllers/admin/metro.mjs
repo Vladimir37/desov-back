@@ -73,7 +73,8 @@ export default {
             ctx.throw(400, 'Incorrect file');
         }
 
-        if (!body.id) {
+        const validation = Joi.validate(body, Validators.pureId);
+        if (validation.error) {
             await afs.unlink(file.destination + file.filename);
             ctx.throw(400, 'Incorrect id');
         }

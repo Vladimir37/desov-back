@@ -9,6 +9,9 @@ export default {
             id: Joi.objectId().required(),
         }
     },
+    pureId: {
+        id: Joi.objectId().required(),
+    },
     createUser: {
         body: {
             login: Joi.string().required(),

@@ -10,6 +10,7 @@ import person from './admin/person';
 import metro from './admin/metro';
 import metroStation from './admin/metro-station';
 import monument from './admin/monument';
+import other from './admin/other';
 
 let router = new Router();
 
@@ -22,6 +23,7 @@ router.use('/district', Middlewares.forAll, district.routes());
 router.use('/person', Middlewares.forAdmin, person.routes());
 router.use('/metro', Middlewares.forAdmin, metro.routes());
 router.use('/metro-station', Middlewares.forAdmin, metroStation.routes());
-router.use('/monument', monument.routes());
+router.use('/monument', Middlewares.forAll, monument.routes());
+router.use('/other', Middlewares.forAll, other.routes());
 
 export default router;
