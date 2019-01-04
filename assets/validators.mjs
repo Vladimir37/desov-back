@@ -178,4 +178,21 @@ export default {
             city: Joi.objectId().required(),
         }
     },
+    createCompany: {
+        old_name: Joi.string().required(),
+        new_name: Joi.string().required(),
+        addr: Joi.string().required(),
+        description: Joi.string().required(),
+        historical: Joi.boolean().required(),
+    },
+    editCompany: {
+        body: {
+            id: Joi.objectId().required(),
+            old_name: Joi.string().required(),
+            new_name: Joi.string().required(),
+            addr: Joi.string().required(),
+            description: Joi.string().required(),
+            historical: Joi.boolean().required(),
+        }
+    }
 }
