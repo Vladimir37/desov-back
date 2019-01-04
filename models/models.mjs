@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
+import config from '../config';
 
 const Schema = mongoose.Schema;
 
-let db = mongoose.connect('mongodb://localhost/desov');
+let db = mongoose.connect(config.db);
 
 const User = new Schema({
     status: String,

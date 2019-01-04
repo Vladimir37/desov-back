@@ -1,5 +1,6 @@
 {
     "port": 3000,
+    "db": "mongodb://localhost/desov",
     "tempFileDirectory": "temp/",
     "permanentFileDirectory": "images/",
     "maxFileSize": 524288

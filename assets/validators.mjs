@@ -12,6 +12,12 @@ export default {
     pureId: {
         id: Joi.objectId().required(),
     },
+    remove: {
+        body: {
+            id: Joi.objectId().required(),
+            forced: Joi.boolean(),
+        }
+    },
     createUser: {
         body: {
             login: Joi.string().required(),
