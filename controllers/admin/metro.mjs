@@ -3,7 +3,7 @@ import Joi from 'joi';
 import afs from 'async-file';
 import config from '../../config';
 import Validators from '../../assets/validators';
-import { MetroModel, CityModel } from '../../models/models';
+import { MetroModel, MetroStationModel, CityModel } from '../../models/models';
 
 export default {
     async create(ctx) {
@@ -111,6 +111,10 @@ export default {
         if (!metro) {
             ctx.throw(400, 'Incorrect metro id');
         }
+
+        await MetroStationModel.deleteMany({
+            metro: metro._id,
+        });
 
         await afs.unlink(config.permanentFileDirectory + metro.logo);
         await metro.remove();

@@ -64,7 +64,7 @@ export default {
             ctx.throw(400, 'Collection is not empty');
         }
 
-        await CityModel.updateMany({
+        await MetroModel.updateMany({
             city: city._id,
         }, {
             city: null,
