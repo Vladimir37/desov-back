@@ -16,14 +16,14 @@ export const UserModel = mongoose.model('User', User);
 const Metro = new Schema({
     name: String,
     logo: String,
-    city: Schema.Types.ObjectId,
+    city: {type: Schema.Types.ObjectId, ref: 'City'},
 });
 export const MetroModel = mongoose.model('Metro', Metro);
 
 const MetroStation = new Schema({
     old_name: String,
     new_name: String,
-    metro: Schema.Types.ObjectId,
+    metro: {type: Schema.Types.ObjectId, ref: 'Metro'},
 });
 export const MetroStationModel = mongoose.model('MetroStation', MetroStation);
 
@@ -38,7 +38,7 @@ const City = new Schema({
     old_name: String,
     new_name: String,
     historical: Boolean,
-    oblast: Schema.Types.ObjectId,
+    oblast: {type: Schema.Types.ObjectId, ref: 'Oblast'},
     population: String,
     to_rename: Boolean,
 });
@@ -47,7 +47,7 @@ export const CityModel = mongoose.model('City', City);
 const Street = new Schema({
     old_name: String,
     new_name: String,
-    city: Schema.Types.ObjectId,
+    city: {type: Schema.Types.ObjectId, ref: 'City'},
     historical: Boolean,
     type: Number, // 0 - street; 1 - square; 2 - park
 });
@@ -56,7 +56,7 @@ export const StreetModel = mongoose.model('Street', Street);
 const District = new Schema({
     old_name: String,
     new_name: String,
-    city: Schema.Types.ObjectId,
+    city: {type: Schema.Types.ObjectId, ref: 'City'},
     historical: Boolean,
 });
 export const DistrictModel = mongoose.model('District', District);
@@ -64,7 +64,7 @@ export const DistrictModel = mongoose.model('District', District);
 const Monument = new Schema({
     coordinate: String,
     title: String,
-    city: Schema.Types.ObjectId,
+    city: {type: Schema.Types.ObjectId, ref: 'City'},
     photo: String,
 });
 export const MonumentModel = mongoose.model('Monument', Monument);
@@ -73,7 +73,7 @@ const Other = new Schema({
     coordinate: String,
     title: String,
     description: String,
-    city: Schema.Types.ObjectId,
+    city: {type: Schema.Types.ObjectId, ref: 'City'},
     photo: String,
 });
 export const OtherModel = mongoose.model('Other', Other);

@@ -28,6 +28,6 @@ router.use('/metro-station', Middlewares.forAdmin, metroStation.routes());
 router.use('/monument', Middlewares.forAll, monument.routes());
 router.use('/other', Middlewares.forAll, other.routes());
 router.use('/company', Middlewares.forAll, company.routes());
-router.use('/remove', remove.routes());
+router.use('/remove', Middlewares.forAdmin, remove.routes());
 
 export default router;

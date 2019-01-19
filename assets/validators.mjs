@@ -87,7 +87,7 @@ export default {
             new_name: Joi.string(),
             city: Joi.objectId().required(),
             historical: Joi.boolean().required(),
-            type: Joi.number().required(),
+            type: Joi.number().min(0).max(2).required(),
         }
     },
     editStreet: {
@@ -97,7 +97,7 @@ export default {
             new_name: Joi.string(),
             city: Joi.objectId().required(),
             historical: Joi.boolean().required(),
-            type: Joi.number().required(),
+            type: Joi.number().min(0).max(2).required(),
         }
     },
     createDistrict: {
@@ -199,6 +199,30 @@ export default {
             addr: Joi.string().required(),
             description: Joi.string().required(),
             historical: Joi.boolean().required(),
+        }
+    },
+    getCity: {
+        query: {
+            oblast: Joi.objectId(),
+            unassigned: Joi.boolean(),
+        }
+    },
+    getMetro: {
+        query: {
+            unassigned: Joi.boolean(),
+        }
+    },
+    getMetroStation: {
+        query: {
+            metro: Joi.objectId(),
+            unassigned: Joi.boolean(),
+        }
+    },
+    getStreet: {
+        query: {
+            city: Joi.objectId(),
+            type: Joi.number().min(0).max(2),
+            unassigned: Joi.boolean(),
         }
     }
 }
