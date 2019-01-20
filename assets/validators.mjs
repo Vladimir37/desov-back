@@ -224,5 +224,24 @@ export default {
             type: Joi.number().min(0).max(2),
             unassigned: Joi.boolean(),
         }
+    },
+    getDistrict: {
+        query: {
+            city: Joi.objectId(),
+            type: Joi.number().min(0).max(2),
+            unassigned: Joi.boolean(),
+        }
+    },
+    getMonument: {
+        query: {
+            city: Joi.objectId(),
+            unassigned: Joi.boolean(),
+        }
+    },
+    getOther: {
+        query: {
+            city: Joi.objectId(),
+            unassigned: Joi.boolean(),
+        }
     }
 }

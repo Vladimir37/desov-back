@@ -89,5 +89,55 @@ export default {
             success: true,
             body: streets,
         };
+    },
+    async district(ctx) {
+        let condition = {};
+
+        if (ctx.request.query.unassigned) {
+            condition.city = null;
+        } else if (ctx.request.query.city) {
+            condition.city = ctx.request.query.city;
+        } else {
+            ctx.throw(400, 'Incorrect city id');
+        }
+
+        const districts = await DistrictModel.find(condition).populate('city');
+
+        ctx.body = {
+            success: true,
+            body: districts,
+        };
+    },
+    async monument(ctx) {
+        let condition = {};
+
+        if (ctx.request.query.unassigned) {
+            condition.city = null;
+        } else if (ctx.request.query.city) {
+            condition.city = ctx.request.query.city;
+        } 
+
+        const monuments = await MonumentModel.find(condition).populate('city');
+
+        ctx.body = {
+            success: true,
+            body: monuments,
+        };
+    },
+    async other(ctx) {
+        let condition = {};
+
+        if (ctx.request.query.unassigned) {
+            condition.city = null;
+        } else if (ctx.request.query.city) {
+            condition.city = ctx.request.query.city;
+        } 
+
+        const other = await OtherModel.find(condition).populate('city');
+
+        ctx.body = {
+            success: true,
+            body: other,
+        };
     }
 }
