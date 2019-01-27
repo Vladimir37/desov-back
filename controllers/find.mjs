@@ -139,5 +139,21 @@ export default {
             success: true,
             body: other,
         };
-    }
+    },
+    async person(ctx) {
+        const persons = await PersonModel.find();
+
+        ctx.body = {
+            success: true,
+            body: persons,
+        };
+    },
+    async company(ctx) {
+        const companies = await CompanyModel.find();
+
+        ctx.body = {
+            success: true,
+            body: companies,
+        };
+    },
 }

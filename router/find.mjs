@@ -13,5 +13,7 @@ router.get('/street', Validation(Validators.getStreet), Find.street);
 router.get('/district', Validation(Validators.getDistrict), Find.district);
 router.get('/monument', Validation(Validators.getMonument), Find.monument);
 router.get('/other', Validation(Validators.getOther), Find.other);
+router.get('/person', Find.person);
+router.get('/company', Find.company);
 
 export default router;
