@@ -173,31 +173,38 @@ export default {
             city: {
                 model: CityModel, 
                 name: 'old_name',
+                parent: 'oblast',
             },
             metro: {
                 model: MetroModel, 
                 name: 'name',
+                parent: 'city',
             },
             metrostation: {
                 model: MetroStationModel, 
                 name: 'old_name',
+                parent: 'metro',
             },
             street: {
                 model: StreetModel, 
                 name: 'old_name',
                 additional: streetType,
+                parent: 'city',
             },
             district: {
                 model: DistrictModel, 
                 name: 'old_name',
+                parent: 'city',
             },
             monument: {
                 model: MonumentModel, 
                 name: 'title',
+                parent: 'city',
             },
             other: {
                 model: OtherModel, 
                 name: 'title',
+                parent: 'city',
             },
             company: {
                 model: CompanyModel,
@@ -212,7 +219,7 @@ export default {
                     $options: 'i',
                 },
                 ...modelsDict[entity].additional,
-            });
+            }).populate(modelsDict[entity].parent || '');
         };
 
         ctx.body = {
