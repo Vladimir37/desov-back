@@ -156,4 +156,68 @@ export default {
             body: companies,
         };
     },
+    async search(ctx) {
+        let result = {};
+
+        const targets = ctx.request.query.targets;
+
+        const streetType = typeof ctx.request.query.streetType == 'number' ? {
+            type: ctx.request.query.streetType,
+        } : null;
+
+        const modelsDict = {
+            oblast: {
+                model: OblastModel,
+                name: 'old_name',
+            }, 
+            city: {
+                model: CityModel, 
+                name: 'old_name',
+            },
+            metro: {
+                model: MetroModel, 
+                name: 'name',
+            },
+            metrostation: {
+                model: MetroStationModel, 
+                name: 'old_name',
+            },
+            street: {
+                model: StreetModel, 
+                name: 'old_name',
+                additional: streetType,
+            },
+            district: {
+                model: DistrictModel, 
+                name: 'old_name',
+            },
+            monument: {
+                model: MonumentModel, 
+                name: 'title',
+            },
+            other: {
+                model: OtherModel, 
+                name: 'title',
+            },
+            company: {
+                model: CompanyModel,
+                name: 'old_name',
+            },
+        };
+
+        for (const entity of targets) {
+            result[entity] = await modelsDict[entity].model.find({
+                [modelsDict[entity].name]: {
+                    $regex: ctx.request.query.request,
+                    $options: 'i',
+                },
+                ...modelsDict[entity].additional,
+            });
+        };
+
+        ctx.body = {
+            success: true,
+            body: result,
+        };
+    }
 }

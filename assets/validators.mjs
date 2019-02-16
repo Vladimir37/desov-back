@@ -3,6 +3,8 @@ import JoiObjectId from 'joi-objectid';
 
 Joi.objectId = JoiObjectId(Joi);
 
+const searchList = ['oblast', 'city', 'metro', 'metrostation', 'street', 'district', 'monument', 'other', 'company'];
+
 export default {
     id: {
         body: {
@@ -242,6 +244,13 @@ export default {
         query: {
             city: Joi.objectId(),
             unassigned: Joi.boolean(),
+        }
+    },
+    search: {
+        query: {
+            request: Joi.string().min(3).required(),
+            targets: Joi.array().items(Joi.string().valid(searchList)).unique(),
+            streetType: Joi.number().min(0).max(2),
         }
     }
 }

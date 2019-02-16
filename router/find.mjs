@@ -15,5 +15,6 @@ router.get('/monument', Validation(Validators.getMonument), Find.monument);
 router.get('/other', Validation(Validators.getOther), Find.other);
 router.get('/person', Find.person);
 router.get('/company', Find.company);
+router.get('/search', Validation(Validators.search), Find.search);
 
 export default router;
