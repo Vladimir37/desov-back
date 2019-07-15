@@ -8,7 +8,8 @@ import {
     DistrictModel, 
     MonumentModel, 
     OtherModel, 
-    CompanyModel 
+    CompanyModel,
+    DetailModel,
 } from '../../models/models';
 
 export default {
@@ -162,4 +163,7 @@ export default {
             success: true,
         };
     },
+    // async removeDetails(ctx) {
+    //     const detail = await DetailModel.findById(ctx.request.body.id);
+    // }
 }

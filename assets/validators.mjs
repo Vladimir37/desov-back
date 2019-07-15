@@ -252,5 +252,22 @@ export default {
             targets: Joi.array().items(Joi.string().valid(searchList)).unique(),
             streetType: Joi.number().min(0).max(2),
         }
+    },
+    createDetails: {
+        query: {
+            title: Joi.string().required(),
+            text: Joi.string().required(),
+            regex: Joi.string(),
+            hidden: Joi.boolean().required(),
+        }
+    },
+    editDetails: {
+        query: {
+            id: Joi.objectId().required(),
+            title: Joi.string().required(),
+            text: Joi.string().required(),
+            regex: Joi.string(),
+            hidden: Joi.boolean().required(),
+        }
     }
 }

@@ -103,3 +103,11 @@ const Issue = new Schema({
     active: Boolean,
 });
 export const IssueModel = mongoose.model('Issue', Issue);
+
+const Detail = new Schema({
+    title: String,
+    text: String,
+    regex: String,
+    hidden: Boolean,
+});
+export const DetailModel = mongoose.model('Detail', Detail);
