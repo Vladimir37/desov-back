@@ -3,5 +3,7 @@
     "db": "mongodb://localhost/desov",
     "tempFileDirectory": "temp/",
     "permanentFileDirectory": "images/",
-    "maxFileSize": 524288
+    "maxFileSize": 524288,
+    "sessionKey": "session key code",
+    "captchaKey": "captchaKeyCode"
 }

@@ -253,21 +253,37 @@ export default {
             streetType: Joi.number().min(0).max(2),
         }
     },
-    createDetails: {
-        query: {
-            title: Joi.string().required(),
+    // createDetails: {
+    //     body: {
+    //         title: Joi.string().required(),
+    //         text: Joi.string().required(),
+    //         regex: Joi.string(),
+    //         hidden: Joi.boolean().required(),
+    //     }
+    // },
+    // editDetails: {
+    //     body: {
+    //         id: Joi.objectId().required(),
+    //         title: Joi.string().required(),
+    //         text: Joi.string().required(),
+    //         regex: Joi.string(),
+    //         hidden: Joi.boolean().required(),
+    //     }
+    // },
+    createIssue: {
+        body: {
             text: Joi.string().required(),
-            regex: Joi.string(),
-            hidden: Joi.boolean().required(),
+            mail: Joi.string().required(),
         }
     },
-    editDetails: {
-        query: {
-            id: Joi.objectId().required(),
-            title: Joi.string().required(),
-            text: Joi.string().required(),
-            regex: Joi.string(),
-            hidden: Joi.boolean().required(),
+    closeIssue: {
+        body: {
+            id: Joi.string().required(),
+        }
+    },
+    closeIssueByIP: {
+        body: {
+            ip: Joi.string().required(),
         }
     }
 }

@@ -13,6 +13,7 @@ import monument from './admin/monument';
 import other from './admin/other';
 import company from './admin/company';
 import remove from './admin/remove';
+import issue from './admin/issue';
 
 let router = new Router();
 
@@ -29,5 +30,6 @@ router.use('/monument', Middlewares.forAll, monument.routes());
 router.use('/other', Middlewares.forAll, other.routes());
 router.use('/company', Middlewares.forAll, company.routes());
 router.use('/remove', Middlewares.forAdmin, remove.routes());
+router.use('/issue', Middlewares.forAll, issue.routes());
 
 export default router;
